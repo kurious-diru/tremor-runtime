@@ -179,13 +179,13 @@ spec_bop_float(S, N) ->
             spec_bop_float(S, N2)}
           ]).
 spec_bop_int(S, N) when N =< 1 ->
-    {oneof(['+','-','*','/']),
+    {oneof(['+','-','*','/','band']),
      int_or_int_local(S),
      int_or_int_local(S)};
 
 spec_bop_int(S, N) ->
     N1 = N div 2,
     N2 = N - N1,
-    {oneof(['+','-','*','/']),
+    {oneof(['+','-','*','/','band']),
      spec_bop_int(S, N1),
      spec_bop_int(S, N2)}.
