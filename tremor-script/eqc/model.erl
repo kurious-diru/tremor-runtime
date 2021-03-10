@@ -90,6 +90,10 @@ ast_eval(#vars{} = S, {'band', A, B}) ->
     {S1, A1} = ast_eval(S, A),
     {S2, B1} = ast_eval(S1, B),
     {S2, A1 band B1};
+ast_eval(#vars{} = S, {'bxor', A, B}) ->
+    {S1, A1} = ast_eval(S, A),
+    {S2, B1} = ast_eval(S1, B),
+    {S2, A1 bxor B1};
 ast_eval(#vars{} = S, {'+', A}) ->
     {S1, A1} = ast_eval(S, A), {S1, A1};
 ast_eval(#vars{} = S, {'-', A}) ->
