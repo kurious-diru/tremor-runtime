@@ -12,7 +12,7 @@
 %% See the License for the specific language governing permissions and
 %% limitations under the License.
 %%
-
+% not part of proptest, we need it to create the ast 
 -module(gen_script).
 
 -include_lib("pbt.hrl").
@@ -38,13 +38,23 @@ gen_({'+', A})  -> ["(+ ", gen_(A), ")"];
 gen_({'-', A}) -> ["(- ", gen_(A), ")"];
 gen_({'let', Path, Expr}) -> ["let ", gen_(Path), " = ", gen_(Expr)];
 gen_({local, Path}) -> Path;
+%                                    "This is #{1} example"
+gen_({'#',String1, String2, Sub}) -> ["(", string:trim(gen_(String1), trailing, "\""), "#{", gen(Sub), "}", string:trim(gen_(String2), leading, "\""), ")"];
+% String1 = "This is "
+% Sub = 1
+% String2 = " example"
+%it's for tremor and it needs to be a valid ts
+%                 "This is    #{1}      example"
+% string:trim(jsx:encode(String1), trailing, "\"")
+% string:trim(gen_(String1), trailing, "\"")
+% string:trim(gen_(String2), leading, "\"")
+% gen_({'#', String1, String2, Sub}) -> ["(", String1, gen_(Sub), String2, ")"];
 gen_({emit, A}) -> ["emit (", gen_(A), ")"];
 gen_(drop) -> "drop";
 gen_(true) -> "true";
 gen_(false) -> "false";
 gen_(null) -> "null";
 gen_(X) when is_number(X) -> io_lib:format("~p", [X]);
-gen_(X) when is_binary(X) -> jsx:encode(X).
-
+gen_(X) when is_binary(X) -> jsx:encode(X). % use json encoder to make the string proper
 gen(Expr) ->
     iolist_to_binary(gen_(Expr)).

@@ -57,12 +57,12 @@ gen_bool(#state{} = S) ->
     resize(3, ?SIZED(N, spec_inner_bool(S, N))).
 
 spec_inner(#state{}=S, N) ->
-    frequency([
+    ?LAZY(frequency([
                {10, spec_inner_float(S, N)},
                {10, spec_inner_int(S, N)},
                {10, spec_inner_string(S, N)},
                {10, spec_inner_bool(S, N)}
-          ]).
+          ])).
 
 spec_inner_int(#state{}=S, N) ->
     ?LAZY(frequency([
@@ -77,7 +77,10 @@ spec_inner_float(#state{}=S, N) ->
               ])).
 
 spec_inner_string(#state{}=S, N) ->
-    ?LAZY(spec_bop_string(S, N)).
+    ?LAZY(frequency([
+        {5, spec_bop_string(S, N)},
+        {5, spec_string_interpolation(S, N)}
+    ])).
 
 spec_inner_bool(#state{}=S, N) ->
     ?LAZY(frequency([
@@ -86,7 +89,7 @@ spec_inner_bool(#state{}=S, N) ->
               ])).
 
 string() ->
-    utf8(10).
+    base64:encode(crypto:strong_rand_bytes(rand:uniform(10))).
 
 small_int() ->
     choose(1,100).
@@ -124,6 +127,14 @@ spec_uop_bool(S, N) when N =< 1 ->
 
 spec_uop_bool(S, N) ->
     {'not', spec_inner_bool(S, N - 1)}.
+
+spec_string_interpolation(S, N) when N =< 1 ->
+    ?SHRINK({'#',string(), string(), string()},
+    [string(), string(), string()]);
+
+spec_string_interpolation(S, N) ->
+    ?SHRINK({'#',string(), string(), spec_inner(S, N-1)},
+    [string(), string(), spec_inner(S, N-1)]).
 
 spec_bop_string(S, N) when N =< 1 ->
     {oneof(['+']), string_or_string_local(S), string_or_string_local(S)};

@@ -129,7 +129,12 @@ where
                             let r = e.run(opts, env, event, state, meta, local)?;
                             if let Some(s) = r.as_str() {
                                 out.push_str(&s);
-                            } else {
+                                print!("BADGER");
+                            } else if let Some(_s) = r.as_f64(){
+                                out.push_str("SNOT");
+                                out.push_str("BADGER");
+                                print!("SNOT");
+                            }else {
                                 out.push_str(r.encode().as_str());
                             };
                         }

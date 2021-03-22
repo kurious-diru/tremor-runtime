@@ -25,6 +25,14 @@ resolve(#state{locals = L}, {local, _} = K) ->
 -spec ast_eval(#vars{}, {}) -> {#vars{},
 				integer() | float() | boolean() | binary()}.
 
+ast_eval(#vars{} = S, {'#',A, B, Expr}) ->
+    {S1, Expr1} = ast_eval(S, Expr),
+    case Expr1 of
+        Expr1 when is_binary(Expr1) ->
+        {S1, <<A/binary, Expr1/binary ,B/binary>>};
+        Expr1 ->
+        {S1, <<A/binary, (jsx:encode(Expr1))/binary, B/binary>>}
+    end;
 ast_eval(#vars{} = S, {'+', A, B})
     when is_binary(A) andalso is_binary(B) ->
     {S, <<A/binary, B/binary>>};
