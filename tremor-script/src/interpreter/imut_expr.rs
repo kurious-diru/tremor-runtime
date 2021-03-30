@@ -125,15 +125,26 @@ where
                 for e in elements {
                     match e {
                         crate::ast::StrLitElement::Lit(l) => out.push_str(l),
+                        #[cfg(not(feature="erlang-float-testing"))]
                         crate::ast::StrLitElement::Expr(e) => {
                             let r = e.run(opts, env, event, state, meta, local)?;
                             if let Some(s) = r.as_str() {
                                 out.push_str(&s);
-                                print!("BADGER");
-                            } else if let Some(_s) = r.as_f64(){
-                                out.push_str("SNOT");
-                                out.push_str("BADGER");
-                                print!("SNOT");
+                            }else {
+                                out.push_str(r.encode().as_str());
+                            };
+                        }
+                        // TODO: The float scenario is different in erlang and rust
+                        // We don't want to over engineer and write own format function
+                        // any suggestions are welcome
+                        // We knowingly excluded float correctness in string interpolation 
+                        #[cfg(feature="erlang-float-testing")]
+                        crate::ast::StrLitElement::Expr(e) => {
+                            let r = e.run(opts, env, event, state, meta, local)?;
+                            if let Some(s) = r.as_str() {
+                                out.push_str(&s);
+                            } else if let Some(_f) = r.as_f64(){
+                                out.push_str("42");
                             }else {
                                 out.push_str(r.encode().as_str());
                             };

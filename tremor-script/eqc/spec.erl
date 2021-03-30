@@ -129,12 +129,16 @@ spec_uop_bool(S, N) ->
     {'not', spec_inner_bool(S, N - 1)}.
 
 spec_string_interpolation(S, N) when N =< 1 ->
-    ?SHRINK({'#',string(), string(), string()},
-    [string(), string(), string()]);
+    ?SHRINK(
+        {'#', string(), string(), oneof([float(), string(), small_int()])},
+        [string(), string(), oneof([float(), string(), small_int()])]
+    );
 
 spec_string_interpolation(S, N) ->
-    ?SHRINK({'#',string(), string(), spec_inner(S, N-1)},
-    [string(), string(), spec_inner(S, N-1)]).
+    ?SHRINK(
+        {'#', string(), string(), spec_inner(S, N-1)},
+        [string(), string(), spec_inner(S, N-1)]
+    ).
 
 spec_bop_string(S, N) when N =< 1 ->
     {oneof(['+']), string_or_string_local(S), string_or_string_local(S)};

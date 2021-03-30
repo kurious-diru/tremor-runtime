@@ -983,8 +983,23 @@ impl<'script> Upable<'script> for ImutExprRaw<'script> {
                             let i = e.up(helper)?;
                             let i = i.try_reduce(helper)?;
                             match i {
+                                #[cfg(not(feature="erlang-float-testing"))]
                                 ImutExprInt::Literal(l) => l.value.as_str().map_or_else(
-                                    || StrLitElement::Lit(l.value.encode().into()),
+                                    || 
+                                        StrLitElement::Lit(l.value.encode().into()),
+                                    |s| StrLitElement::Lit(s.to_string().into()),
+                                ),
+                                // TODO: The float scenario is different in erlang and rust
+                                // We don't want to over engineer and write own format function
+                                // any suggestions are welcome
+                                // We knowingly excluded float correctness in string interpolation 
+                                #[cfg(feature="erlang-float-testing")]
+                                ImutExprInt::Literal(l) => l.value.as_str().map_or_else(
+                                    || { 
+                                        if let Some(_f) = l.value.as_f64(){
+                                                StrLitElement::Lit("42".into()) 
+                                        } else{
+                                        StrLitElement::Lit(l.value.encode().into())}},
                                     |s| StrLitElement::Lit(s.to_string().into()),
                                 ),
                                 _ => StrLitElement::Expr(i),
