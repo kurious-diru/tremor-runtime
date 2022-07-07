@@ -1381,7 +1381,7 @@ checksum = "22813a6dc45b335f9bade10bf7271dc477e81113e89eb251a0bc2a8a81c536e1"
 dependencies = [
  "bstr",
  "csv-core",
- "itoa",
+ "itoa 0.4.7",
  "ryu",
  "serde",
 ]
@@ -1853,6 +1853,15 @@ name = "float-cmp"
 version = "0.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e1267f4ac4f343772758f7b1bdcbe767c218bbab93bb432acbf5162bbf85a6c4"
+dependencies = [
+ "num-traits",
+]
+
+[[package]]
+name = "float-cmp"
+version = "0.9.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "98de4bbd547a563b716d8dfa9aad1cb19bfab00f4fa09a6a4ed21dbcf44ce9c4"
 dependencies = [
  "num-traits",
 ]
@@ -2450,7 +2459,7 @@ checksum = "d6ccf5ede3a895d8856620237b2f02972c1bbc78d2965ad7fe8838d4a0ed41f0"
 dependencies = [
  "bytes 0.4.12",
  "fnv",
- "itoa",
+ "itoa 0.4.7",
 ]
 
 [[package]]
@@ -2461,7 +2470,7 @@ checksum = "527e8c9ac747e28542699a951517aa9a6945af506cd1f2e1b53a576c17b6cc11"
 dependencies = [
  "bytes 1.0.1",
  "fnv",
- "itoa",
+ "itoa 0.4.7",
 ]
 
 [[package]]
@@ -2575,7 +2584,7 @@ dependencies = [
  "http-body 0.1.0",
  "httparse",
  "iovec",
- "itoa",
+ "itoa 0.4.7",
  "log",
  "net2",
  "rustc_version",
@@ -2606,7 +2615,7 @@ dependencies = [
  "http-body 0.3.1",
  "httparse",
  "httpdate",
- "itoa",
+ "itoa 0.4.7",
  "pin-project",
  "socket2 0.3.19",
  "tokio 0.2.25",
@@ -2630,7 +2639,7 @@ dependencies = [
  "http-body 0.4.1",
  "httparse",
  "httpdate",
- "itoa",
+ "itoa 0.4.7",
  "pin-project",
  "socket2 0.3.19",
  "tokio 1.4.0",
@@ -2858,6 +2867,12 @@ name = "itoa"
 version = "0.4.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "dd25036021b0de88a0aff6b850051563c6516d0bf53f8638938edbb9de732736"
+
+[[package]]
+name = "itoa"
+version = "1.0.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "112c678d4050afce233f4f2852bb2eb519230b3cf12f33585275537d7e41578d"
 
 [[package]]
 name = "js-sys"
@@ -3375,7 +3390,7 @@ dependencies = [
  "base64-url",
  "crossbeam-channel 0.5.0",
  "fastrand",
- "itoa",
+ "itoa 0.4.7",
  "json",
  "libc",
  "log",
@@ -4970,7 +4985,7 @@ version = "1.0.64"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "799e97dc9fdae36a5c8b8f2cae9ce2ee9fdce2058c57a93e6099d919fd982f79"
 dependencies = [
- "itoa",
+ "itoa 0.4.7",
  "ryu",
  "serde",
 ]
@@ -4994,7 +5009,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "642dd69105886af2efd227f75a520ec9b44a820d65bc133a9131f7d229fd165a"
 dependencies = [
  "dtoa",
- "itoa",
+ "itoa 0.4.7",
  "serde",
  "url 1.7.2",
 ]
@@ -5006,7 +5021,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9ec5d77e2d4c73717816afac02670d5c4f534ea95ed430442cad02e7a6e32c97"
 dependencies = [
  "dtoa",
- "itoa",
+ "itoa 0.4.7",
  "serde",
  "url 2.2.2",
 ]
@@ -5018,7 +5033,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "edfa57a7f8d9c1d260a549e7224100f6c43d43f9103e06dd8b4095a9b2b43ce9"
 dependencies = [
  "form_urlencoded",
- "itoa",
+ "itoa 0.4.7",
  "ryu",
  "serde",
 ]
@@ -5150,7 +5165,7 @@ dependencies = [
  "serde",
  "serde_json",
  "simdutf8",
- "value-trait",
+ "value-trait 0.2.12",
 ]
 
 [[package]]
@@ -5160,11 +5175,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3221374cc85242d6da1fea48d5b6edb417cf79cf9f6d6c636cd8425161faa096"
 dependencies = [
  "chrono",
- "itoa",
+ "itoa 0.4.7",
  "ryu",
  "simd-json",
  "simd-json-derive-int",
- "value-trait",
+ "value-trait 0.2.12",
 ]
 
 [[package]]
@@ -6341,7 +6356,7 @@ dependencies = [
  "dirs-next",
  "env_logger 0.8.3",
  "error-chain 0.12.4",
- "float-cmp",
+ "float-cmp 0.8.0",
  "globwalk",
  "halfbrown",
  "http-types",
@@ -6388,7 +6403,7 @@ dependencies = [
  "pretty_assertions",
  "simd-json",
  "snmalloc-rs",
- "value-trait",
+ "value-trait 0.3.0",
 ]
 
 [[package]]
@@ -6441,7 +6456,7 @@ dependencies = [
  "tremor-influx",
  "tremor-script",
  "url 2.2.2",
- "value-trait",
+ "value-trait 0.3.0",
  "window",
  "xz2",
 ]
@@ -6526,7 +6541,7 @@ dependencies = [
  "tremor-value",
  "tungstenite 0.13.0",
  "url 2.2.2",
- "value-trait",
+ "value-trait 0.3.0",
  "xz2",
 ]
 
@@ -6546,7 +6561,7 @@ dependencies = [
  "distance",
  "downcast-rs",
  "error-chain 0.12.4",
- "float-cmp",
+ "float-cmp 0.8.0",
  "fxhash",
  "glob",
  "grok",
@@ -6578,7 +6593,7 @@ dependencies = [
  "tremor-value",
  "unicode-xid 0.2.2",
  "url 2.2.2",
- "value-trait",
+ "value-trait 0.3.0",
  "xz2",
 ]
 
@@ -6588,7 +6603,7 @@ version = "0.3.2"
 dependencies = [
  "base64 0.13.0",
  "beef",
- "float-cmp",
+ "float-cmp 0.8.0",
  "getopts",
  "halfbrown",
  "proptest",
@@ -6596,7 +6611,7 @@ dependencies = [
  "serde_json",
  "simd-json",
  "simd-json-derive",
- "value-trait",
+ "value-trait 0.3.0",
 ]
 
 [[package]]
@@ -6878,13 +6893,25 @@ dependencies = [
 
 [[package]]
 name = "value-trait"
-version = "0.2.4"
+version = "0.2.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6034fb7710bdb0f90669eb6b1ba37a15186872d61926dcf447f92c440a034f9b"
+checksum = "0fe40a74a6f052b10668ef021c8c3ae56ab38269f9c0f401daa6ed36f96662fd"
 dependencies = [
- "float-cmp",
+ "float-cmp 0.9.0",
  "halfbrown",
- "itoa",
+ "itoa 0.4.7",
+ "ryu",
+]
+
+[[package]]
+name = "value-trait"
+version = "0.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "668f73b86e4f79f4ce2db52de48fee0d0c240bf7461a6333c5e5919149f50b43"
+dependencies = [
+ "float-cmp 0.9.0",
+ "halfbrown",
+ "itoa 1.0.2",
  "ryu",
 ]
 
