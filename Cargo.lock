@@ -1381,7 +1381,7 @@ checksum = "22813a6dc45b335f9bade10bf7271dc477e81113e89eb251a0bc2a8a81c536e1"
 dependencies = [
  "bstr",
  "csv-core",
- "itoa",
+ "itoa 0.4.7",
  "ryu",
  "serde",
 ]
@@ -1577,7 +1577,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b93ec2fc4df5aeba3c50bcee606404b60fb2d53ad798403d65c132e36c2f33b4"
 dependencies = [
  "halfbrown",
- "simd-json",
+ "simd-json 0.4.14",
 ]
 
 [[package]]
@@ -1853,6 +1853,15 @@ name = "float-cmp"
 version = "0.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e1267f4ac4f343772758f7b1bdcbe767c218bbab93bb432acbf5162bbf85a6c4"
+dependencies = [
+ "num-traits",
+]
+
+[[package]]
+name = "float-cmp"
+version = "0.9.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "98de4bbd547a563b716d8dfa9aad1cb19bfab00f4fa09a6a4ed21dbcf44ce9c4"
 dependencies = [
  "num-traits",
 ]
@@ -2450,7 +2459,7 @@ checksum = "d6ccf5ede3a895d8856620237b2f02972c1bbc78d2965ad7fe8838d4a0ed41f0"
 dependencies = [
  "bytes 0.4.12",
  "fnv",
- "itoa",
+ "itoa 0.4.7",
 ]
 
 [[package]]
@@ -2461,7 +2470,7 @@ checksum = "527e8c9ac747e28542699a951517aa9a6945af506cd1f2e1b53a576c17b6cc11"
 dependencies = [
  "bytes 1.0.1",
  "fnv",
- "itoa",
+ "itoa 0.4.7",
 ]
 
 [[package]]
@@ -2575,7 +2584,7 @@ dependencies = [
  "http-body 0.1.0",
  "httparse",
  "iovec",
- "itoa",
+ "itoa 0.4.7",
  "log",
  "net2",
  "rustc_version",
@@ -2606,7 +2615,7 @@ dependencies = [
  "http-body 0.3.1",
  "httparse",
  "httpdate",
- "itoa",
+ "itoa 0.4.7",
  "pin-project",
  "socket2 0.3.19",
  "tokio 0.2.25",
@@ -2630,7 +2639,7 @@ dependencies = [
  "http-body 0.4.1",
  "httparse",
  "httpdate",
- "itoa",
+ "itoa 0.4.7",
  "pin-project",
  "socket2 0.3.19",
  "tokio 1.4.0",
@@ -2860,6 +2869,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "dd25036021b0de88a0aff6b850051563c6516d0bf53f8638938edbb9de732736"
 
 [[package]]
+name = "itoa"
+version = "1.0.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4217ad341ebadf8d8e724e264f13e593e0648f5b3e94b3896a5df283be015ecc"
+
+[[package]]
 name = "js-sys"
 version = "0.3.49"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2985,7 +3000,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f404a90a744e32e8be729034fc33b90cf2a56418fbf594d69aa3c0214ad414e5"
 dependencies = [
  "cfg-if 1.0.0",
- "lexical-core",
+ "lexical-core 0.7.6",
 ]
 
 [[package]]
@@ -2998,6 +3013,70 @@ dependencies = [
  "bitflags",
  "cfg-if 1.0.0",
  "ryu",
+ "static_assertions",
+]
+
+[[package]]
+name = "lexical-core"
+version = "0.8.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2cde5de06e8d4c2faabc400238f9ae1c74d5412d03a7bd067645ccbc47070e46"
+dependencies = [
+ "lexical-parse-float",
+ "lexical-parse-integer",
+ "lexical-util",
+ "lexical-write-float",
+ "lexical-write-integer",
+]
+
+[[package]]
+name = "lexical-parse-float"
+version = "0.8.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "683b3a5ebd0130b8fb52ba0bdc718cc56815b6a097e28ae5a6997d0ad17dc05f"
+dependencies = [
+ "lexical-parse-integer",
+ "lexical-util",
+ "static_assertions",
+]
+
+[[package]]
+name = "lexical-parse-integer"
+version = "0.8.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6d0994485ed0c312f6d965766754ea177d07f9c00c9b82a5ee62ed5b47945ee9"
+dependencies = [
+ "lexical-util",
+ "static_assertions",
+]
+
+[[package]]
+name = "lexical-util"
+version = "0.8.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5255b9ff16ff898710eb9eb63cb39248ea8a5bb036bea8085b1a767ff6c4e3fc"
+dependencies = [
+ "static_assertions",
+]
+
+[[package]]
+name = "lexical-write-float"
+version = "0.8.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "accabaa1c4581f05a3923d1b4cfd124c329352288b7b9da09e766b0668116862"
+dependencies = [
+ "lexical-util",
+ "lexical-write-integer",
+ "static_assertions",
+]
+
+[[package]]
+name = "lexical-write-integer"
+version = "0.8.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e1b6f3d1f4422866b68192d62f77bc5c700bee84f3069f2469d7bc8c77852446"
+dependencies = [
+ "lexical-util",
  "static_assertions",
 ]
 
@@ -3375,7 +3454,7 @@ dependencies = [
  "base64-url",
  "crossbeam-channel 0.5.0",
  "fastrand",
- "itoa",
+ "itoa 0.4.7",
  "json",
  "libc",
  "log",
@@ -3478,7 +3557,7 @@ checksum = "e7413f999671bd4745a7b624bd370a569fb6bc574b23c83a3c5ed2e453f3d5e2"
 dependencies = [
  "bitvec",
  "funty",
- "lexical-core",
+ "lexical-core 0.7.6",
  "memchr",
  "version_check",
 ]
@@ -4970,7 +5049,7 @@ version = "1.0.64"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "799e97dc9fdae36a5c8b8f2cae9ce2ee9fdce2058c57a93e6099d919fd982f79"
 dependencies = [
- "itoa",
+ "itoa 0.4.7",
  "ryu",
  "serde",
 ]
@@ -4994,7 +5073,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "642dd69105886af2efd227f75a520ec9b44a820d65bc133a9131f7d229fd165a"
 dependencies = [
  "dtoa",
- "itoa",
+ "itoa 0.4.7",
  "serde",
  "url 1.7.2",
 ]
@@ -5006,7 +5085,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9ec5d77e2d4c73717816afac02670d5c4f534ea95ed430442cad02e7a6e32c97"
 dependencies = [
  "dtoa",
- "itoa",
+ "itoa 0.4.7",
  "serde",
  "url 2.2.2",
 ]
@@ -5018,7 +5097,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "edfa57a7f8d9c1d260a549e7224100f6c43d43f9103e06dd8b4095a9b2b43ce9"
 dependencies = [
  "form_urlencoded",
- "itoa",
+ "itoa 0.4.7",
  "ryu",
  "serde",
 ]
@@ -5142,15 +5221,29 @@ checksum = "0f0242b8e50dd9accdd56170e94ca1ebd223b098eb9c83539a6e367d0f36ae68"
 
 [[package]]
 name = "simd-json"
-version = "0.4.5"
+version = "0.4.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3fb185479883bd6c0d8a8c196bbe5d87bcfe26d9a2177c6946a80ebd94ae1ffd"
+checksum = "c41e10e442f4e1113a9152f67740d8fd97e1636e0cc18efb865fc272d142f506"
 dependencies = [
  "halfbrown",
  "serde",
  "serde_json",
  "simdutf8",
- "value-trait",
+ "value-trait 0.2.4",
+]
+
+[[package]]
+name = "simd-json"
+version = "0.7.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8e3375b6c3d8c048ba09c8b4b6c3f1d3f35e06b71db07d231c323943a949e1b8"
+dependencies = [
+ "halfbrown",
+ "lexical-core 0.8.5",
+ "serde",
+ "serde_json",
+ "simdutf8",
+ "value-trait 0.5.0",
 ]
 
 [[package]]
@@ -5160,11 +5253,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3221374cc85242d6da1fea48d5b6edb417cf79cf9f6d6c636cd8425161faa096"
 dependencies = [
  "chrono",
- "itoa",
+ "itoa 0.4.7",
  "ryu",
- "simd-json",
+ "simd-json 0.4.14",
  "simd-json-derive-int",
- "value-trait",
+ "value-trait 0.2.4",
 ]
 
 [[package]]
@@ -5175,15 +5268,15 @@ checksum = "519eb2021f6450f0333cf10c3f0794e5c41e3c41c6a4816e425f0b0b42ed554d"
 dependencies = [
  "proc-macro2",
  "quote 1.0.9",
- "simd-json",
+ "simd-json 0.4.14",
  "syn 1.0.64",
 ]
 
 [[package]]
 name = "simdutf8"
-version = "0.1.3"
+version = "0.1.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c970da16e7c682fa90a261cf0724dee241c9f7831635ecc4e988ae8f3b505559"
+checksum = "f27f6278552951f1f2b8cf9da965d10969b2efdea95a6ec47987ab46edfe263a"
 
 [[package]]
 name = "simple-mutex"
@@ -6321,7 +6414,7 @@ dependencies = [
  "serde",
  "serde_derive",
  "serde_yaml",
- "simd-json",
+ "simd-json 0.7.0",
  "tide",
  "tremor-pipeline",
  "tremor-runtime",
@@ -6341,7 +6434,7 @@ dependencies = [
  "dirs-next",
  "env_logger 0.8.3",
  "error-chain 0.12.4",
- "float-cmp",
+ "float-cmp 0.8.0",
  "globwalk",
  "halfbrown",
  "http-types",
@@ -6357,7 +6450,7 @@ dependencies = [
  "serde_json",
  "serde_yaml",
  "shell-words",
- "simd-json",
+ "simd-json 0.7.0",
  "snmalloc-rs",
  "surf",
  "tch",
@@ -6386,9 +6479,9 @@ dependencies = [
  "criterion",
  "lexical",
  "pretty_assertions",
- "simd-json",
+ "simd-json 0.7.0",
  "snmalloc-rs",
- "value-trait",
+ "value-trait 0.2.4",
 ]
 
 [[package]]
@@ -6398,7 +6491,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3e3865de0ff6397aefe564d36fd528c3ea0b96179ca019109e7fd0b7369d7fb0"
 dependencies = [
  "serde",
- "simd-json",
+ "simd-json 0.4.14",
 ]
 
 [[package]]
@@ -6433,7 +6526,7 @@ dependencies = [
  "serde",
  "serde_derive",
  "serde_yaml",
- "simd-json",
+ "simd-json 0.7.0",
  "simd-json-derive",
  "sled",
  "tempfile",
@@ -6441,7 +6534,7 @@ dependencies = [
  "tremor-influx",
  "tremor-script",
  "url 2.2.2",
- "value-trait",
+ "value-trait 0.2.4",
  "window",
  "xz2",
 ]
@@ -6506,7 +6599,7 @@ dependencies = [
  "serde_derive",
  "serde_yaml",
  "serenity",
- "simd-json",
+ "simd-json 0.7.0",
  "simd-json-derive",
  "sled",
  "smol",
@@ -6526,7 +6619,7 @@ dependencies = [
  "tremor-value",
  "tungstenite 0.13.0",
  "url 2.2.2",
- "value-trait",
+ "value-trait 0.2.4",
  "xz2",
 ]
 
@@ -6546,7 +6639,7 @@ dependencies = [
  "distance",
  "downcast-rs",
  "error-chain 0.12.4",
- "float-cmp",
+ "float-cmp 0.8.0",
  "fxhash",
  "glob",
  "grok",
@@ -6566,7 +6659,7 @@ dependencies = [
  "rental",
  "serde",
  "serde_derive",
- "simd-json",
+ "simd-json 0.7.0",
  "simd-json-derive",
  "sketches-ddsketch",
  "strip-ansi-escapes",
@@ -6578,7 +6671,7 @@ dependencies = [
  "tremor-value",
  "unicode-xid 0.2.2",
  "url 2.2.2",
- "value-trait",
+ "value-trait 0.2.4",
  "xz2",
 ]
 
@@ -6588,15 +6681,15 @@ version = "0.3.2"
 dependencies = [
  "base64 0.13.0",
  "beef",
- "float-cmp",
+ "float-cmp 0.8.0",
  "getopts",
  "halfbrown",
  "proptest",
  "serde",
  "serde_json",
- "simd-json",
+ "simd-json 0.7.0",
  "simd-json-derive",
- "value-trait",
+ "value-trait 0.2.4",
 ]
 
 [[package]]
@@ -6882,9 +6975,21 @@ version = "0.2.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6034fb7710bdb0f90669eb6b1ba37a15186872d61926dcf447f92c440a034f9b"
 dependencies = [
- "float-cmp",
+ "float-cmp 0.8.0",
  "halfbrown",
- "itoa",
+ "itoa 0.4.7",
+ "ryu",
+]
+
+[[package]]
+name = "value-trait"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7c39f0b6c3d217fc9864f14a7bbae74cf562eddf4e0e276b91846b70425c8a87"
+dependencies = [
+ "float-cmp 0.9.0",
+ "halfbrown",
+ "itoa 1.0.4",
  "ryu",
 ]
 
